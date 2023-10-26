@@ -37,7 +37,7 @@ body{
     padding: 15px 25px;
   }
   .category1{
-    background-image: url('C:\Users\Admin\OneDrive\Desktop\ReactProject\quiz-app\public\profile.jpg');
+    background-image: url('/public/profile.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     width:150px;
