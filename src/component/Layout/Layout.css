@@ -1,0 +1,59 @@
+.navbar {
+    position:fixed;
+    top:0;
+    left:0;
+    height:40px;
+    background-color: #16486e;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-list {
+    margin-left:70%;
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+  }
+  
+  .nav-item {
+    margin-right: 20px;
+  }
+  
+  .nav-item:last-child {
+    margin-right: 0;
+  }
+  
+  .logout-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+  }
+  
+  .login-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .logout-button:hover {
+    background-color: #c82333;
+  }
+  .head{
+    color:white;
+    text-decoration:none;
+    font-size:20px;
+    margin-left:5px;
+  }
+  /* Styles for the sidebar container */
+
+

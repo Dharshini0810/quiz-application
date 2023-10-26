@@ -1,0 +1,45 @@
+p{
+    text-align:center;
+}
+.signup{
+    color:blue;
+}
+.signup:visited{
+    color:blue;
+}
+.google-signup-button {
+    display: flex;
+    align-items: center;
+    background-color: #007bff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.google-signup-button:hover {
+    background-color: #0056b3;
+}
+
+.google-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.google-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-text {
+    margin-left: 10px;
+}
+  

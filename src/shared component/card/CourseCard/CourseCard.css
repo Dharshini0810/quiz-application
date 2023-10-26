@@ -1,0 +1,40 @@
+.course-card {
+    width: 500px; /* Adjust the width as needed */
+    padding: 20px; /* Adjust the padding as needed */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 10px;
+    background-color: #e0e0e0; /* Adjust the background color as needed */
+    color: #333; /* Adjust the text color as needed */
+    font-size: 14px; /* Adjust the font size as needed */
+    transition: background-color 0.3s;
+  }
+  
+  .course-card:hover {
+    background-color: #307e6f;
+     /* Adjust the hover background color as needed */
+  }
+  .course-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .desc{
+    text-align: left;
+  }
+  .button-link {
+    display: inline-block;
+    padding: 8px 16px; /* Adjust padding for your desired button size */
+    background-color: #0074D9; /* Button background color */
+    color: #FFFFFF; /* Button text color */
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .button-link:hover {
+    background-color: #0056A1; /* Hover background color */
+  }

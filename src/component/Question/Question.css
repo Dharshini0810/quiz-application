@@ -1,0 +1,82 @@
+.question-form {
+  width:800px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 20px;
+  }
+  
+  /* Form elements */
+  .question-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .question-form select,
+  .question-form input[type="textarea"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-right:10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Add option button */
+  .question-form button[type="button"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .question-form button[type="submit"] {
+    background-color: #28a745;
+  }
+  
+  /* Error message */
+  .error-message {
+    color: #dc3545;
+    margin-top: 10px;
+  }
+  
+  /* Success message */
+  .success-message {
+    color: #28a745;
+    margin-top: 10px;
+  }
+  
+  /* Styling for options */
+  .question-form .options {
+    display: grid;
+    gap: 10px;
+  }
+  
+  .question-form .option {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .question-form .option input {
+    flex: 1;
+  }
+  .side-bar-right{
+    margin-top:80px;
+    margin-left:30%;
+    display:block;
+    align-items: center;
+  }
+ 
+  
+  
+  
+  
+  
+  

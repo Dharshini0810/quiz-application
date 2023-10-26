@@ -1,38 +1,16 @@
-.App {
-  text-align: center;
+.logout-button {
+  background-color: #dc3545; /* Background color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Padding around the button text */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Show a pointer cursor on hover */
+  font-size: 16px; /* Font size */
+  text-decoration: none; /* Remove underlines from links */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  /* Add a hover effect */
+.logout-button:hover {
+    background-color: #c82333; /* Change background color on hover */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
