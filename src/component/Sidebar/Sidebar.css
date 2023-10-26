@@ -2,7 +2,6 @@
     display: flex;
   }
   .category{
-    background-image: url('C:\Users\Admin\OneDrive\Desktop\ReactProject\quiz-app\public\profile.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     width:100px;
