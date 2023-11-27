@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { db } from '../firebase';
-import { collection, addDoc,getDocs, deleteDoc,doc,getDoc,setDoc } from 'firebase/firestore';
+import { collection, addDoc,getDocs, deleteDoc,doc,getDoc,setDoc} from 'firebase/firestore';
 
 const DataContext = createContext();
 
@@ -12,11 +12,10 @@ export function DataContextProvider({ children}) {
   const [courses,setCourses] = useState([]);
   const [questions,setQuestions] = useState([]);
   const [time,setTime] = useState(0);
-  const [score,setScore] = useState(0);
 
   const courseCollection = collection(db, 'course');
   const usersCollection = collection(db,'admin');
-  const userScoresCollection = collection(db,'score');
+  const userNameCollection = collection(db,'users');
 
   const fetchTime = async (courseId) => {
     const courseDocRef = doc(db, 'course', courseId);
@@ -56,6 +55,7 @@ export function DataContextProvider({ children}) {
   }
 
   const fetchAdmin = async (email,password) =>{
+    let matched = false;
     try{
       const querySnapshot = await getDocs(usersCollection);
       const documents = querySnapshot.docs.map((doc)=>({
@@ -69,18 +69,26 @@ export function DataContextProvider({ children}) {
       if(matchingUser){
         setAdmin(true);
         setMatch(true);
+        matched = true;
       }
       else{
         setMatch(false);
+        matched = false;
       }
     }catch(error){
       setError(error);
     }
+    return matched;
   }
 
   const addQuestions = async (courseId,questionData) =>{
     try{
       const questionsCollection = collection(db, 'course' , courseId , 'questions');
+      const existingquestions = await getDocs(questionsCollection);
+      if(!existingquestions.empty){
+        setSuccessMessage("Questions Already Present");
+        return;
+      }
       await addDoc(questionsCollection , {questions: questionData});
       setSuccessMessage('Question Added Successfully');
       setTimeout(() => {
@@ -94,35 +102,65 @@ export function DataContextProvider({ children}) {
 
   const saveUserScore = async (userId, courseId, score) => {
     try {
-      const userScoreDocRef = doc(userScoresCollection, userId);
-      const userScoreDoc = await getDoc(userScoreDocRef);
-      console.log("Running....")
-      if (userScoreDoc.exists()) {
-        console.log("Running if....")
-        const userScores = userScoreDoc.data();
-        userScores[courseId] = score;
+      const userRef = collection(userNameCollection, userId, 'scores');
+      const existingCourses = await getDocs(userRef);
+      let courseExists = false;
   
-        await setDoc(userScoreDocRef, userScores);
-      } else {
-        console.log("Running else....")
-        const userScores = {
-          [courseId]: score,
+      existingCourses.forEach(async (doc) => {
+        if (doc.id === courseId) {
+          courseExists = true;
+          const courseData = doc.data();
+          const currentAttempts = courseData.attempts || 0;
+  
+          const updatedCourseData = {
+            marks: score,
+            attempts: currentAttempts + 1 // Incrementing the attempts
+          };
+  
+          await setDoc(doc.ref, updatedCourseData);
+        }
+      });
+  
+      if (!courseExists) {
+        const newCourseData = {
+          marks: score,
+          attempts: 1 // First attempt for a new course
         };
   
-        await setDoc(userScoreDocRef, userScores);
+        await setDoc(doc(userRef, courseId), newCourseData);
       }
-      
     } catch (error) {
       setError(error);
-      console.log(error)
+      console.log(error);
     }
   };
+  
 
-  const getScore = async (userId,courseId)=>{
-    const scoreCollection = doc(db,'score',userId);
-    const scoreDocRef = await getDoc(scoreCollection);
-    
-  }
+  const getUserCourseData = async (userId, courseId) => {
+    try {
+      const userRef = collection(userNameCollection, userId, 'scores');
+      const querySnapshot = await getDocs(userRef);
+  
+      let data = {
+        score: null,
+        attempts: null
+      };
+  
+      querySnapshot.forEach((doc) => {
+        if (doc.id === courseId) {
+          const courseData = doc.data();
+          data.score = courseData.marks; // Assuming 'marks' is where the score is stored
+          data.attempts = courseData.attempts || 0; // Assuming 'attempts' is where attempts are stored
+        }
+      });
+  
+      return data;
+    } catch (error) {
+      console.error('Error getting user course data:', error);
+      throw error;
+    }
+  };
+  
   
 
   const handleSubmit = (e,courseData) => {
@@ -147,6 +185,80 @@ export function DataContextProvider({ children}) {
         setError(error)
     }
   }
+
+    const getCourseId = async(userId) =>{
+        const courseList = collection(userNameCollection,userId,'scores');
+        const querySnapShot = await getDocs(courseList);
+        const course = [];
+        querySnapShot.forEach((doc) => {
+            const data = doc.id;
+            course.push(data);
+        })
+        console.log(course);
+        return course;
+    }
+
+    const getUserName = async (userId) => {
+      let userName = '';
+      const userRef = doc(userNameCollection, userId);
+      try {
+          const userDoc = await getDoc(userRef);
+          if (userDoc.exists()) {
+              const userData = userDoc.data();
+              userName = userData.username || ''; // Replace 'username' with the actual field name in your Firestore document
+          }
+      } catch (error) {
+          console.error('Error fetching user data:', error);
+          throw error;
+      }
+      return userName;
+  };
+  
+   
+    const fetchCourseAndScoreDetails = async (userId, courseArray) => {
+      const resultData = [];
+      try {
+        console.log(courseArray);
+          for (const cid of courseArray) {
+              const courseRef = doc(courseCollection,cid);
+              const courseDoc = await getDoc(courseRef);
+              if (!courseDoc.exists()) {
+                  throw new Error("Course does not exist");
+              }
+              
+              const courseData = courseDoc.data();
+              const { coursename, totalmarks } = courseData;
+  
+              const userRef = doc(userNameCollection, userId, 'scores', cid);
+              const userDoc = await getDoc(userRef);
+  
+              let attempts = 0;
+              let score = 0;
+  
+              if (userDoc.exists()) {
+                  const scoreData = userDoc.data();
+                  attempts = scoreData.attempts || 0;
+                  score = scoreData.marks || 0;
+              } else {
+                  throw new Error("Course not attempted");
+              }
+  
+              resultData.push({
+                  courseId: cid,
+                  coursename,
+                  totalmarks,
+                  attempts,
+                  score
+              });
+          }
+  
+          return resultData;
+      } catch (error) {
+          console.error("Error fetching course and score details:", error);
+          throw error;
+      }
+  };
+  
 
   const fetchData = async () => {
     try {
@@ -179,7 +291,11 @@ export function DataContextProvider({ children}) {
     addQuestions,
     handleDeleteCourse,
     saveUserScore,
-    fetchAdmin
+    fetchAdmin,
+    getUserCourseData, 
+    getCourseId,
+    getUserName,
+    fetchCourseAndScoreDetails
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;

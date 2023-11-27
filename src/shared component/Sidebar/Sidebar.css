@@ -1,0 +1,43 @@
+/* Sidebar.css */
+
+.category {
+  background-image: url('/public/profile.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.category:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.admin-page {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  height: 100%;
+  width: 230px;
+  background: linear-gradient(45deg, #aaaaaa, #666666);
+  color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width:460px){
+  .admin-page{
+    position:fixed;
+    display:flex;
+    width:100%;
+    height:40px;
+    padding:2px;
+    z-index:-3;
+  }
+  .category{
+    display:none;
+  }
+}
+

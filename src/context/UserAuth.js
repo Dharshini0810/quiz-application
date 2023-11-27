@@ -9,6 +9,7 @@ const userAuthcontext = createContext();
 export function UserAuthContextProvider({children}){
     const[user,setUser] = useState("");
     const[userId,setUserId] = useState("");
+    const[isAuthenticated,setIsAuthenticated] = useState(false);
 
     function signUp(email,password){
         return createUserWithEmailAndPassword(auth,email,password)
@@ -30,21 +31,24 @@ export function UserAuthContextProvider({children}){
         return sendPasswordResetEmail(auth,email);
     }
 
+    const a = auth;
     useEffect(()=>{
-        const unsubscribe =onAuthStateChanged(auth,(currentUser)=>{
+        const unsubscribe =onAuthStateChanged(a,(currentUser)=>{
             setUser(currentUser)
             if (currentUser) {
                 setUserId(currentUser.uid); // Access the unique user ID (UID)
+                setIsAuthenticated(true);
               } else {
                 setUserId(null); // No user is authenticated, set userId to null
+                setIsAuthenticated(false);
               }
         })
         return ()=>{
             unsubscribe()
         }
-    },[])
+    },[a])
 
-    return <userAuthcontext.Provider value={{user,userId,signUp,logIn,logOut,googleSignin,resetPassword}}>{children}</userAuthcontext.Provider>
+    return <userAuthcontext.Provider value={{user,userId,signUp,logIn,logOut,googleSignin,isAuthenticated,resetPassword}}>{children}</userAuthcontext.Provider>
 }
 
 export function useUserAuth(){

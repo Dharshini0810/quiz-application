@@ -68,7 +68,7 @@ function AddCourse() {
               <div className="success-message">{successMessage}</div>
             )}
             {error && (
-              <div className="error-message">{error}</div>
+              <div className="error-message">{error.message}</div>
             )}
           </div>
           </div>

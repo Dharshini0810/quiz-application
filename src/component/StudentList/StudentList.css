@@ -1,7 +1,7 @@
 .view-courses-container {
     padding: 20px;
     margin-left:100px;
-    max-width: 1000px;
+    width: 600px;
   }
   
   h2 {
@@ -55,4 +55,14 @@
     display:block;
     align-items: center;
   }
+  @media screen and (max-width: 460px) {
+    .side-bar-right {
+        margin-left: 10px; /* Adjust the margin or positioning */
+    }
+    
+    .view-courses-container {
+        width: 100%; /* Adjust the width to occupy the full width */
+        margin: 20px; /* Adjust the margin for better spacing */
+    }
+}
    

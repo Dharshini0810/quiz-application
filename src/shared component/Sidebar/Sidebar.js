@@ -1,15 +1,18 @@
-import React from 'react'
-import './Sidebar.css'
+import React from "react";
 
-function Sidebar(props) {
+import "./Sidebar.css";
+
+function Sidebar(props) 
+{
+
   return (
+    <div>
       <div className="admin-page">
-      <div className="side-bar-left">
         <div className="category"></div>
         {props.children}
       </div>
     </div>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;

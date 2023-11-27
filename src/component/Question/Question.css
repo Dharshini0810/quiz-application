@@ -73,6 +73,24 @@
     display:block;
     align-items: center;
   }
+  @media screen and (max-width: 768px) {
+    .question-form {
+      padding: 15px;
+    }
+  
+    .question-form select,
+    .question-form input[type="textarea"] {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 460px) {
+    .question-form {
+      max-width: 460px;
+      padding: 10px;
+      margin: 10px;
+    }
+  }
  
   
   

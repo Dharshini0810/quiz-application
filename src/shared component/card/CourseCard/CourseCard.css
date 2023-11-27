@@ -1,5 +1,5 @@
 .course-card {
-    width: 500px; /* Adjust the width as needed */
+    width: 400px; /* Adjust the width as needed */
     padding: 20px; /* Adjust the padding as needed */
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -37,4 +37,13 @@
   
   .button-link:hover {
     background-color: #0056A1; /* Hover background color */
+  }
+  @media  screen and (max-width:460px) {
+    .course-card{
+      width:200px;
+      padding:10px;
+    }
+    .course-title {
+      font-size: 20px;
+    }
   }

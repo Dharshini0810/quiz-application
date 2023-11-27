@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useUserAuth } from '../../context/UserAuth';
 import { useNavigate } from 'react-router-dom';
 import {Alert} from 'react-bootstrap';
@@ -13,6 +13,8 @@ function Login(props) {
     const[error,setError] = useState("");
     const navigate = useNavigate();
 
+    console.log(userId);
+
     const handleSubmit = async (e) =>{
         e.preventDefault();
         setError("");
@@ -21,11 +23,15 @@ function Login(props) {
           if(props.onLogin){
             props.onLogin(email,password);
           }
-          navigate(`${userId}`)
         }catch (err){
           setError(err.message)
         }
       }
+      useEffect(() => {
+        if (userId) {
+          navigate(`/student/${userId}`);
+        }
+      }, [userId, navigate]);
 
 
 

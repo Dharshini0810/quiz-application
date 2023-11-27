@@ -1,7 +1,7 @@
 .side-bar-right1 {
     margin-top: 80px;
     margin-left: 30%;
-    width: 50%; /* Adjust the width as needed */
+    width: 500px; /* Adjust the width as needed */
     height:75vh;
     display: flex;
     align-items: center;
@@ -62,7 +62,27 @@
   .button-container button:hover {
     background-color: #45a049; /* Darker green color on hover */
   }
+  @media screen and (max-width: 460px) {
+    .side-bar-right1 {
+      margin-left: 5%;
+      width: 90%; /* Adjust the width as needed */
+      padding: 10px;
+      margin-top: 20px;
+    }
   
+    .timer {
+      margin-left: 0;
+      text-align: center;
+    }
+  
+    .question-container {
+      padding: 10px;
+    }
+  
+    .button-container {
+      margin-top: 10px;
+    }
+  }
 
 
 

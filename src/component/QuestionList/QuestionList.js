@@ -97,7 +97,6 @@ function QuestionList() {
   console.log('userId:', userId);
   console.log('courseId:', courseId);
     await saveUserScore(userId,courseId,score);
-    alert(`Your Score: ${score}`)
     navigate("score")
   };
 

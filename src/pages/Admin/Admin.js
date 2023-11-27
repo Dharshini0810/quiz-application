@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
@@ -15,7 +15,7 @@ function Admin() {
     const handleSubmit = async (e) =>{
         e.preventDefault();
         setError("");
-        fetchAdmin(email,password);
+        await fetchAdmin(email,password);
         try{
           if(match){
             navigate("admin")

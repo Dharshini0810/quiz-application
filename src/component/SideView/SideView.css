@@ -1,0 +1,54 @@
+/* SideView.css */
+
+/* Add styles for the dropdown */
+.welmsg {
+    position:relative;
+    cursor: pointer;
+  }
+  
+  /* Styles for the dropdown arrow */
+  .welmsg span {
+    margin-left:200px;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  /* Dropdown content */
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: calc(100% + 20px);
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 1;
+    min-width: 120px;
+  }
+  
+  .dropdown-option {
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .dropdown-option:hover {
+    background-color: #f0f0f0;
+  }
+  
+.content{
+    font-weight:18px;
+    text-align:center;
+}
+@media screen and (max-width: 460px) {
+    .welmsg {
+        margin-top:5px;
+        font-size: 16px;
+    }
+
+    .content {
+        display:none;
+        font-size: 14px;
+    }
+}

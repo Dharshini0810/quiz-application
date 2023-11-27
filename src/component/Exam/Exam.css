@@ -1,6 +1,10 @@
-.side-bar-right{
-    margin-top:80px;
-    margin-left:30%;
-    display:block;
-    align-items: center;
-  }
+.exam-container{
+  margin-top:80px;
+  margin-left:400px;
+}
+
+@media screen and (max-width:460px){
+  
+}
+
+  

@@ -47,3 +47,29 @@
     display:block;
     align-items: center;
   }
+  @media screen and (max-width : 460px){
+    .side-bar-right {
+      margin-top: 20px; /* Adjust the top margin for mobile */
+      margin-left: 20%; /* Center the content by setting margin-left and margin-right to auto */
+      margin-right: auto;
+      max-width: 80%; /* Limit the width for better mobile responsiveness */
+    }
+  
+    .course-form-container {
+      width: 100%; /* Make the form container full width on mobile */
+      margin: 0 auto; /* Center the form container */
+      padding: 15px; /* Adjust padding for better spacing */
+    }
+  
+    /* Adjust input fields and buttons for better mobile display */
+    input[type="text"],
+    input[type="number"],
+    button {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    button {
+      padding: 8px 16px; /* Adjust button padding for mobile */
+    }
+  }

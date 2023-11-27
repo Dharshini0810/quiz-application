@@ -9,7 +9,7 @@ function ProtectedRoute({ children }) {
 
   if (!user && !admin) {
     // Redirect to the user dashboard if no user is logged in
-    return <Navigate to="/student" />;
+    return <Navigate to="/" />;
   }
   else if (!admin && !user) {
     // Redirect to the admin login page if no admin is logged in
