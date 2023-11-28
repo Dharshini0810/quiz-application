@@ -4,6 +4,8 @@
 .welmsg {
     position:relative;
     cursor: pointer;
+    font-size:20px;
+    text-align:center;
   }
   
   /* Styles for the dropdown arrow */
