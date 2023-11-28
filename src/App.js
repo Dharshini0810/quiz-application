@@ -5,10 +5,8 @@ import Home from "./pages/Home/Home";
 import Admin from "./pages/Admin/Admin";
 import SignUp from "./component/SignUp/SignUp";
 import { UserAuthContextProvider } from "./context/UserAuth";
-import StudentDashBoard from "./pages/StudentDashbord/StudentDashBoard";
 import ProtectedRoute from "./component/ProtectedRoute/ProtectedRoute";
 import Layout from "./component/Layout/Layout";
-import AdminDashBoard from "./pages/AdminDashBoard/AdminDashBoard";
 import AddCourse from "./component/AddCourse/AddCourse";
 import Student from "./pages/Student/Student";
 import { DataContextProvider } from "./context/FetchDeleteData";
@@ -43,7 +41,6 @@ function App() {
               element={
                 <ProtectedRoute>
                   <SideView />
-                  <StudentDashBoard />
                 </ProtectedRoute>
               }
             />
@@ -52,7 +49,6 @@ function App() {
               element={
                 <ProtectedRoute>
                   <SideViewAdmin />
-                  <AdminDashBoard />
                 </ProtectedRoute>
               }
             />

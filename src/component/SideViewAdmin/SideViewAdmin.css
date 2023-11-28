@@ -1,0 +1,64 @@
+/* SideView.css */
+
+/* Styles for the dropdown */
+.welmsg {
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    color:#ad2633;
+    margin-bottom:40px;
+  }
+  
+  /* Styles for the dropdown arrow */
+  .welmsg span {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .drop{
+    position: relative;
+    cursor: pointer;
+    font-size:20px;
+    font-weight: bold;
+    margin:30px;
+  
+  }
+  .content{
+    margin:20px;
+    cursor: pointer;
+  }
+  .content::after {
+    content: '';
+    position: absolute;
+    bottom: -5px; /* Adjust the position of the line as needed */
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease; /* Add a transition for smoother effect */
+  }
+  
+  /* Hover effect for the line */
+  .content:hover::after {
+    width: 90%; /* Adjust the width of the line on hover */
+  }
+  
+  
+  
+  /* Media Query for smaller screens */
+  @media screen and (max-width: 460px) {
+    .welmsg {
+      font-size: 16px;
+    }
+  
+    .content {
+      display: none;
+      font-size: 14px;
+    }
+  }
+  

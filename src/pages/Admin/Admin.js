@@ -6,7 +6,7 @@ import './Admin.css'
 import { useDataContext } from '../../context/FetchDeleteData';
 
 function Admin() {
-    const {fetchAdmin,match} = useDataContext();
+    const {fetchAdmin} = useDataContext();
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [error,setError] = useState("");
@@ -15,7 +15,7 @@ function Admin() {
     const handleSubmit = async (e) =>{
         e.preventDefault();
         setError("");
-        await fetchAdmin(email,password);
+        const match = await fetchAdmin(email,password);
         try{
           if(match){
             navigate("admin")

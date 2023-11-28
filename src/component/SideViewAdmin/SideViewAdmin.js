@@ -1,6 +1,7 @@
 import React from 'react'
 import Sidebar from '../../shared component/Sidebar/Sidebar'
 import { useNavigate } from 'react-router-dom'
+import './SideViewAdmin.css'
 
 function SideViewAdmin() {
     const navigate = useNavigate();
